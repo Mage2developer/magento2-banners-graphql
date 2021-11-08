@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mage2developer
+ * Copyright (C) 2021 Mage2developer
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html
+ *
+ * @category Mage2developer
+ * @package Mage2_Banners
+ * @copyright Copyright (c) 2021 Mage2developer
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author Mage2developer
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mage2\Banners\Api\Data\BannerInterface" type="Mage2\Banners\Model\Banner"/>
+    <preference for="Mage2\Banners\Api\Data\BannerSearchResultsInterface" type="Mage2\Banners\Model\BannerSearchResults"/>
+    <preference for="Mage2\Banners\Api\BannerRepositoryInterface" type="Mage2\Banners\Model\BannerRepository"/>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="banner_items_listing_data_source" xsi:type="string">Mage2\Banners\Model\ResourceModel\Banner\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Mage2\Banners\Model\ResourceModel\Banner\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mage2_banners</argument>
+            <argument name="eventPrefix" xsi:type="string">banner_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">banner_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Mage2\Banners\Model\ResourceModel\Banner</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Mage2\Banners\BannerImageUpload" type="Mage2\Banners\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">mage2/banners</argument>
+            <argument name="basePath" xsi:type="string">mage2/banners</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Mage2\Banners\Controller\Adminhtml\Banner\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Mage2\Banners\BannerImageUpload</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,27 @@
+type Query {
+    banners (
+        is_active: Int @doc(description: "Is banner active to display in front")
+    ): Banners @resolver(class: "Mage2\\Banners\\Model\\Resolver\\Banners") @doc(description: "Banners returns active banners")
+}
+
+type Banners @doc(description: "Banners graphql gather of all the banners") {
+    is_enabled: Boolean @doc(description: "If the banners extension enabled or not")
+    infinite_loop: Boolean @doc(description: "If the banners slide infinitely or not")
+    show_buttons: Boolean @doc(description: "If the Prev/Next button shows on banner or not")
+    show_dots: Boolean @doc(description: "If the navigation dots show on banner or not")
+    autoplay: Boolean @doc(description: "If banners autoplay on page load or not")
+    autoplay_speed: Int @doc(description: "The value of banner autoplay speed")
+    pause_on_hover: Boolean @doc(description: "If the banner should be paused on mouse hover or not")
+    total_count: Int @doc(descrioption: "Total number of banners")
+    items: [Banner] @doc(description: "An array of banners")
+}
+
+type Banner @doc(description: "Banner defines banner details") {
+    banners_id: Int @doc(description: "Banner identifier")
+    title: String @doc(description: "Banner title")
+    image: String @doc(description: "Banner image name/file name")
+    link: String @doc(description: "Banner link to redirect")
+    sort_order: Int @doc(description: "Sequence number")
+    is_active: Int @doc(description: "Is banner active to display on front")
+    created_at: String @doc(description: "Date time when banner added")
+}

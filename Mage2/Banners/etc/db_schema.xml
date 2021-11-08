@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mage2developer
+ * Copyright (C) 2021 Mage2developer
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html
+ *
+ * @category Mage2developer
+ * @package Mage2_Banners
+ * @copyright Copyright (c) 2021 Mage2developer
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author Mage2developer
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mage2_banners" resource="default" engine="innodb" comment="Mage2 Banners">
+        <column xsi:type="int" name="banners_id" unsigned="false" nullable="false" identity="true"
+                comment="Banners Id"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Banner Title"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Banner Image"/>
+        <column xsi:type="varchar" name="link" nullable="false" length="50" comment="Banner Link"/>
+        <column xsi:type="smallint" name="sort_order" padding="6" unsigned="false" nullable="false" identity="false" comment="Sort Order"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Banner Active"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Banner Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="banners_id"/>
+        </constraint>
+        <index referenceId="BANNERS_TITLE" indexType="fulltext">
+            <column name="title"/>
+        </index>
+    </table>
+</schema>

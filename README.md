@@ -37,5 +37,5 @@
 <p><b><i>Add/Edit Banner Form</i></b></p>
 <img src="https://user-images.githubusercontent.com/26230770/140746526-c5f04e11-634d-4564-9676-5fd86ac72086.png" alt="Add-Edit-Banner-Magento-Admin"/>
 
-<p><b><i>Product Inquiry form on Product Page</i></b></p>
+<p><b><i>Banner Slider on Custom Page</i></b></p>
 <img src="https://user-images.githubusercontent.com/26230770/140746680-84bee7a8-79a0-4e2c-89a3-8c1dcc91ae6e.png" alt="Mage2-Banner-Slider"/>
